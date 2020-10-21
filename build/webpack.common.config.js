@@ -1,6 +1,7 @@
 'use strict';
 const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 const CopyPlugin = require('copy-webpack-plugin');
@@ -13,11 +14,12 @@ const home = path.resolve(__dirname, '..');
 
 module.exports = {
   entry: path.join(home, 'src/main.ts'),
+  context: path.join(home, 'src'),
   output: {
     path: path.join(home, 'dist'),
     filename: 'static/js/[name].[contenthash:8].js',
     publicPath: '',
-    chunkFilename: 'static/js/[name].[contenthash:8].js'
+    chunkFilename: 'static/js/[id].[chunkhash:8].js'
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.vue', '.jsx', '.js', '.json'],
@@ -45,7 +47,7 @@ module.exports = {
           loader: 'url-loader',
           options: {
             limit: 2000,
-            name: path.join('static/assets/font', '[name].[hash:8].[ext]')
+            name: path.posix.join('static/assets/font', '[name].[hash:8].[ext]')
           }
         }]
       },
@@ -55,7 +57,7 @@ module.exports = {
           loader: 'url-loader',
           options: {
             limit: 4096,
-            name: path.join('static/assets/img', '[name].[hash:8].[ext]')
+            name: path.posix.join('static/assets/img', '[name].[hash:8].[ext]')
           }
         }]
       },
@@ -72,10 +74,10 @@ module.exports = {
   plugins: [
     // 以下为联邦模块，v5 新加核心功能，实际应用可注释
     new ModuleFederationPlugin({
-      name: 'layout',
+      name: 'demo',
       filename: 'remoteEntry.js',
       remotes: {
-        home: 'home@http://localhost:3002/remoteEntry.js',
+        home: 'home@http://localhost:3001/remoteEntry.js',
       },
       exposes: {},
     }),
@@ -86,8 +88,6 @@ module.exports = {
       chunks: ['main'],
       inlineSource: 'runtime~.+\\.js'
     }),
-    new VueLoaderPlugin(),
-    new ProgressBarPlugin(),
     new CopyPlugin(
       {
         patterns: [{
@@ -95,13 +95,19 @@ module.exports = {
           to: path.join(home, 'dist'),
           toType: 'dir',
           globOptions: {
+            dot: false,
             ignore: [
-              '.DS_Store',
-              'index.html'
+              '**/index.html'
             ]
           }
         }]
       }
     ),
+    new VueLoaderPlugin(),
+    new ProgressBarPlugin(),
+    new webpack.DefinePlugin({
+      __VUE_OPTIONS_API__: true,
+      __VUE_PROD_DEVTOOLS__: false
+    })
   ]
 }
