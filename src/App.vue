@@ -4,7 +4,6 @@
     <router-link to="/about">About</router-link>
     <router-view/>
   </div>
-  
 </template>
 
 <style lang="scss">
@@ -18,7 +17,6 @@
 
 #nav {
   padding: 30px;
-  color: red;
 
   a {
     font-weight: bold;

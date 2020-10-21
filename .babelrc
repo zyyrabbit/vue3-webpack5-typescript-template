@@ -9,14 +9,15 @@
 				"useESModules": false
 			}
 		],
-		["@babel/plugin-proposal-decorators", { "legacy": true }]
+		["@babel/plugin-proposal-decorators", { "legacy": true }],
+		"@babel/plugin-proposal-class-properties"
 	],
 	"presets": [
 		"@babel/preset-env",
 		[
 		 "@babel/preset-typescript",
 		  {
-        "allExtensions": true // 必须设置，否者编译.vue 文件中ts 代码会报错
+            "allExtensions": true // 必须设置，否者编译.vue 文件中ts 代码会报错
 		  }
 		]
 	]

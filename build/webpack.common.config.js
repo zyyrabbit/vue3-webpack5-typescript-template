@@ -20,7 +20,7 @@ module.exports = {
     chunkFilename: 'static/js/[name].[contenthash:8].js'
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.vue', '.jsx', '.js', '.json'],
+    extensions: ['.ts', '.tsx', '.vue', '.jsx', '.js', '.json'],
     alias: {
       '@': path.join(home, 'src'),
       vue: '@vue/runtime-dom',
@@ -45,7 +45,7 @@ module.exports = {
           loader: 'url-loader',
           options: {
             limit: 2000,
-            name: path.join('static/asset/font', '[name].[hash:8].[ext]')
+            name: path.join('static/assets/font', '[name].[hash:8].[ext]')
           }
         }]
       },
@@ -55,7 +55,7 @@ module.exports = {
           loader: 'url-loader',
           options: {
             limit: 4096,
-            name: path.join('static/asset/img', '[name].[hash:8].[ext]')
+            name: path.join('static/assets/img', '[name].[hash:8].[ext]')
           }
         }]
       },
