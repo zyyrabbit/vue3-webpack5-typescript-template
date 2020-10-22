@@ -5,7 +5,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 const CopyPlugin = require('copy-webpack-plugin');
-const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+// const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const cssLoader = require('./css-loader.config');
 
@@ -14,6 +14,8 @@ const home = path.resolve(__dirname, '..');
 
 module.exports = {
   entry: path.join(home, 'src/main.ts'),
+  // Defaults to 'browserslist' or to 'web' when no browserslist configuration was found.
+  target: 'web', // 设置.browserslistrc 必须设置target,否则浏览器端热更新会失效
   context: path.join(home, 'src'),
   output: {
     path: path.join(home, 'dist'),
@@ -104,7 +106,7 @@ module.exports = {
       }
     ),
     new VueLoaderPlugin(),
-    new ProgressBarPlugin(),
+   // new ProgressBarPlugin(),
     new webpack.DefinePlugin({
       __VUE_OPTIONS_API__: true,
       __VUE_PROD_DEVTOOLS__: false

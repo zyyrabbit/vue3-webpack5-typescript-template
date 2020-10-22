@@ -16,7 +16,7 @@ interface UserInfo {
 class User extends VuexModule {
   // user info
   private userInfoState: UserInfo | null = {
-    name: 'vue3-webpack5-typescript'
+    name: 'Wlecome to Your vue3 webpack5 Typescript App'
   };
 
   get getUserInfoState(): UserInfo | null {

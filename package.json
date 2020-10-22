@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.5.5",
+    "@babel/runtime-corejs3": "^7.12.1",
     "vue": "^3.0.0",
     "vue-class-component": "^8.0.0-0",
     "vue-router": "^4.0.0-0",
@@ -19,10 +20,12 @@
     "@babel/core": "^7.5.5",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/plugin-proposal-decorators": "^7.12.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
     "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-typescript": "^7.12.0",
     "@types/webpack-env": "^1.15.3",
+    "@vue/babel-plugin-jsx": "^1.0.0-rc.3",
     "@vue/compiler-sfc": "^3.0.0",
     "babel-loader": "^8.1.0",
     "case-sensitive-paths-webpack-plugin": "^2.3.0",
@@ -46,6 +49,6 @@
     "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^5.2.0"
   },
-  "main": "main.js",
+  "main": "main.ts",
   "license": "MIT"
 }
