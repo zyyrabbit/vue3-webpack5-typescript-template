@@ -37,7 +37,13 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'babel-loader'
+        use: 'babel-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.js$/,
+        use: 'babel-loader',
+        exclude: /node_modules/
       },
       {
         test: /\.vue$/,
