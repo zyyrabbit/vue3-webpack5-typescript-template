@@ -15,7 +15,7 @@ const home = path.resolve(__dirname, '..');
 module.exports = {
   entry: path.join(home, 'src/main.ts'),
   // Defaults to 'browserslist' or to 'web' when no browserslist configuration was found.
-  target: 'web', // 设置.browserslistrc 必须设置target,否则浏览器端热更新会失效
+  target: 'web', // 设置.browserslistrc 必须设置target, 否则浏览器端热更新会失效
   context: path.join(home, 'src'),
   output: {
     path: path.join(home, 'dist'),
